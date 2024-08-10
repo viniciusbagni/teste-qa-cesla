@@ -5,7 +5,6 @@ Feature: APP Flutter
         When Quero gerenciar cadastros de alunos
         Then Para que eu possa realizar a matrícula do aluno
 
-
     Scenario: Login
         And I check that I am in the "Inserir exames" tab and continue searching for the "Médico solicitante" informing CRM "12"
         And after search to the doctor, I search for the desired "HEMOGRAMA" test
