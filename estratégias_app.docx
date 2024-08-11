@@ -1,0 +1,34 @@
+1° Plano de ação diante da situação:
+
+Separar e priorizar os erros apresentados:
+
+Identificar Prioridades: Classificar os problemas - dividir os problemas em categorias de acordo com seu impacto no sistema (crítico, alto, médio, baixo).
+Foco nos críticos: Resolver primeiro os problemas que impedem o funcionamento básico do aplicativo ou que comprometem a experiência do usuário.
+Criar um backlog: Listar todos os problemas e suas prioridades para um acompanhamento mais eficiente.
+
+Automatização de Testes:
+
+Expansão da cobertura: Ampliar a cobertura dos testes automatizados para incluir cenários de integração e regressão que não foram cobertos anteriormente.
+Execução frequente: Executar os testes automatizados com frequência para identificar novos problemas o mais cedo possível.
+
+Gerenciamento Ágil do Tempo:
+
+Revisão do escopo: Avaliar a possibilidade de adiar funcionalidades menos críticas para a primeira versão do aplicativo.
+Foco no valor de negócio: Priorizar as funcionalidades que entregam mais valor para o cliente.
+
+
+2° Estratégia para evitar problemas futuros:
+
+Testes de Integração Contínuos:
+
+Integração contínua: Implementar um processo de integração contínua para detectar problemas de integração o mais cedo possível.
+Testes automatizados: Automatizar os testes de integração para garantir que todas as mudanças no código não introduzam novos problemas.
+
+Melhoria da Cobertura de Testes:
+
+Análise de riscos: Identificar os componentes do sistema que são mais críticos e garantir que eles estejam bem cobertos por testes.
+Testes de ponta a ponta: Realizar testes de ponta a ponta para verificar o funcionamento do sistema como um todo.
+
+Uso de Ferramentas de Gestão de Qualidade:
+
+Gerenciamento de defeitos: Utilizar ferramentas para rastrear e gerenciar os defeitos encontrados durante os testes.
