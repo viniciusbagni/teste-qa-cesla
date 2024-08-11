@@ -4,9 +4,9 @@ Este projeto contém a escrita de cenários em BDD, utilizando Gherkin com Cucum
 
 # Como inicializar o projeto
 
-*Clone o repositorio em sua máquina local com o comando ```git clone``` e em seguida, instale as dependências com o comando ```npm install```.
-U*se o comando ```npx cypress run``` para execução completa.
-Ut*ilize o comando ```npx cypress open``` para abrir a janela de execução e selecionar os casos a serem executados.
+* Clone o repositorio em sua máquina local com o comando ```git clone``` e em seguida, instale as dependências com o comando ```npm install```.
+* Use o comando ```npx cypress run``` para execução completa.
+* Utilize o comando ```npx cypress open``` para abrir a janela de execução e selecionar os casos a serem executados.
 
 # Estrutura
 
