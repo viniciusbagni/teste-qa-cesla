@@ -1,22 +1,23 @@
 /// <reference types="Cypress" />
 
-const faker = require('faker-br')
+const fakerBR = require('faker-br')
+import { faker } from '@faker-js/faker'
 
 describe('Validation of routes Student', () => {
 	context('POST route validation', () => {
 		it('return status ok to create student', () => {
-			var name = faker.name.firstName() + ' ' + faker.name.lastName()
-			var email = faker.internet.email()
-			var birthdate = '1998-12-20'
-			var academic_record = faker.random.number()
-			var cpf = faker.br.cpf()
-			cy.postStudentsInTheCadastre(name, email, birthdate, academic_record, cpf).then((response) => {
+			var name = fakerBR.name.firstName() + ' ' + fakerBR.name.lastName()
+			var email = fakerBR.internet.email()
+			var birthdate = faker.date.birthdate({ min: 18, max: 80, mode: 'age' });
+			var formattedBirthdate = birthdate.toISOString().split('T')[0]
+			var academic_record = fakerBR.random.number()
+			var cpf = fakerBR.br.cpf()
+			cy.postStudentsInTheCadastre(name, email, formattedBirthdate, academic_record, cpf).then((response) => {
 				expect(response.status).to.eq(201)
 				expect(response.statusText).to.eq('Created')
 				expect(response.body.name).eq(name)
-				expect(response.body.birthdate).eq(birthdate)
+				expect(response.body.birthdate).eq(formattedBirthdate)
 				expect(response.body.email).eq(email)
-				expect(response.body.birthdate).eq(birthdate)
 				expect(response.body.academic_record).eq(academic_record)
 				expect(response.body.cpf).eq(cpf)
 				expect(response.body.createdAt).not.be.empty
@@ -49,22 +50,28 @@ describe('Validation of routes Student', () => {
 				})
 			})
 		})
+		it('return wrong url status', () => {
+			cy.getStudentsInTheCadastreWrongUrl().then((response) => {
+				expect(response.status).to.eq(404)
+				expect(response.statusText).to.eq('Not Found')
+			})
+		})
 	})
 	context('DELETE route validation', () => {
 		it('return status ok to delete student by ID', () => {
-			var name = faker.name.firstName() + ' ' + faker.name.lastName()
-			var email = faker.internet.email()
-			var birthdate = '1998-12-20'
-			var academic_record = faker.random.number()
-			var cpf = faker.br.cpf()
-			cy.postStudentsInTheCadastre(name, email, birthdate, academic_record, cpf).then((response) => {
+			var name = fakerBR.name.firstName() + ' ' + fakerBR.name.lastName()
+			var email = fakerBR.internet.email()
+			var birthdate = faker.date.birthdate({ min: 18, max: 80, mode: 'age' });
+			var formattedBirthdate = birthdate.toISOString().split('T')[0]
+			var academic_record = fakerBR.random.number()
+			var cpf = fakerBR.br.cpf()
+			cy.postStudentsInTheCadastre(name, email, formattedBirthdate, academic_record, cpf).then((response) => {
 				expect(response.status).to.eq(201)
 				var id = response.body.id
 				cy.deleteStudentInTheCadastreByID(id).then((response) => {
 					expect(response.body.name).eq(name)
-					expect(response.body.birthdate).eq(birthdate)
+					expect(response.body.birthdate).eq(formattedBirthdate)
 					expect(response.body.email).eq(email)
-					expect(response.body.birthdate).eq(birthdate)
 					expect(response.body.academic_record).eq(academic_record)
 					expect(response.body.cpf).eq(cpf)
 				})

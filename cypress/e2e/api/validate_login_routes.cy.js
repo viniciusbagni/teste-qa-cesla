@@ -1,12 +1,29 @@
 /// <reference types="Cypress" />
 
-const faker = require('faker-br')
+const fakerBR = require('faker-br')
 
 describe('Validation of routes Login', () => {
 	context('POST route validation', () => {
 		it('return valid status to create user in the login authentication', () => {
-			var email = faker.internet.email()
-			var password = faker.internet.password()
+			var email = fakerBR.internet.email()
+			var password = fakerBR.internet.password()
+			cy.postUsersInTheCadastre(email, password).then((response) => {
+				expect(response.status).to.eq(201)
+				expect(response.statusText).to.eq('Created')
+				expect(response.body).not.null
+				expect(response.body.email).eq(email)
+				expect(response.body.password).eq(password)
+				expect(response.body.token).not.empty
+				var id = response.body.id
+				cy.deleteUsersInTheCadastreByID(id).then((response) => {
+					expect(response.status).to.eq(200)
+					expect(response.body.id).eq(id)
+				})
+			})
+		})
+		it('return valid status to create user in the login authentication', () => {
+			var email = fakerBR.internet.email()
+			var password = fakerBR.internet.password()
 			cy.postUsersInTheCadastre(email, password).then((response) => {
 				expect(response.status).to.eq(201)
 				expect(response.statusText).to.eq('Created')
@@ -47,11 +64,17 @@ describe('Validation of routes Login', () => {
 				})
 			})
 		})
+		it('return wrong url status', () => {
+			cy.getUsersInTheCadastreWrongUrl().then((response) => {
+				expect(response.status).to.eq(404)
+				expect(response.statusText).to.eq('Not Found')
+			})
+		})
 	})
 	context('DELETE route validation', () => {
 		it('return valid status for delete user in the login authentication', () => {
-			var email = faker.internet.email()
-			var password = faker.internet.password()
+			var email = fakerBR.internet.email()
+			var password = fakerBR.internet.password()
 			cy.postUsersInTheCadastre(email, password).then((response) => {
 				expect(response.status).to.eq(201)
 				var id = response.body.id

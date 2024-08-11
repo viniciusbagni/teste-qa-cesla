@@ -35,3 +35,11 @@ Cypress.Commands.add('deleteUsersInTheCadastreByID', (id) => {
 		failOnStatusCode: false
 	})
 })
+
+Cypress.Commands.add('getUsersInTheCadastreWrongUrl', () => {
+	cy.request({
+		method: 'GET',
+		url: Cypress.config('baseApiUrl') + 'api/v1/lo',
+		failOnStatusCode: false
+	})
+})
