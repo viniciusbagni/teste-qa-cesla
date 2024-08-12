@@ -11,9 +11,9 @@ Este projeto contém a escrita de cenários em BDD, utilizando Gherkin com Cucum
 # Estrutura
 
 Os testes automatizados para os endpoints da API estão organizados da seguinte maneira: 
-* cypress\e2e\api contém os arquivos no qual realiza os testes.
-* cypress\support contém os commands usados para estes testes.
-* cypress\e2e\ui contém a escrita de cenários utilizando Cucumber.
+* ```cypress\e2e\api``` contém os arquivos no qual realiza os testes.
+* ```cypress\support``` contém os commands usados para estes testes.
+* ```cypress\e2e\ui``` contém a escrita de cenários utilizando Cucumber.
 
 # Observações
 
