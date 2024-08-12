@@ -1,5 +1,4 @@
 const { defineConfig } = require('Cypress')
-//const cucumber = require('cypress-cucumber-preprocessor').default
 
 module.exports = defineConfig({
   e2e: {
