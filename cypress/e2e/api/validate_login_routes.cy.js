@@ -72,7 +72,7 @@ describe('Validation of routes Login', () => {
 		})
 	})
 	context('DELETE route validation', () => {
-		it('return valid status for delete user in the login authentication', () => {
+		it('return valid status for delete user by ID in the login authentication', () => {
 			var email = fakerBR.internet.email()
 			var password = fakerBR.internet.password()
 			cy.postUsersInTheCadastre(email, password).then((response) => {
@@ -85,6 +85,13 @@ describe('Validation of routes Login', () => {
 					expect(response.body.email).eq(email)
 					expect(response.body.password).eq(password)
 				})
+			})
+		})
+		it('return status for error when deleting user due to non-existent ID', () => {
+			var id = fakerBR.random.number({ min: 200 })
+			cy.deleteUsersInTheCadastreByID(id).then((response) => {
+				expect(response.status).to.eq(404)
+				expect(response.statusText).to.eq('Not Found')
 			})
 		})
 	})

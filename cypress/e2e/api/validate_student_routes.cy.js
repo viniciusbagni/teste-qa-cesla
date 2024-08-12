@@ -77,5 +77,12 @@ describe('Validation of routes Student', () => {
 				})
 			})
 		})
+		it('return status for error when deleting student due to non-existent ID', () => {
+			var id = fakerBR.random.number({ min: 200 })
+			cy.deleteStudentInTheCadastreByID(id).then((response) => {
+				expect(response.status).to.eq(404)
+				expect(response.statusText).to.eq('Not Found')
+			})
+		})
 	})
 })
